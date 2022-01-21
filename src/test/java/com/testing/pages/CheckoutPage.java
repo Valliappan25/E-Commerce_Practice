@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.testing.POJO.BillingAddress;
+import com.testing.POJO.Login;
 import com.testing.POM.BasePage;
 
 public class CheckoutPage extends BasePage {
@@ -110,9 +111,13 @@ public class CheckoutPage extends BasePage {
 		.enterBillingAddress(billingAddress.getAddress())
 		.enterBillingCity(billingAddress.getCity())
 		.enterPostalCode(billingAddress.getPostalCode())
-		.enterEmailAddress(billingAddress.getEmail());
-		
-		
+		.enterEmailAddress(billingAddress.getEmail());	
+	}
+	
+	public CheckoutPage enterLoginDetails(Login login)
+	{
+		return enterUserName(login.getEmail())
+				.enterPassword(login.getPassword());
 	}
 	
 	public String getNotice()

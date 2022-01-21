@@ -12,6 +12,8 @@ import org.testng.annotations.Test;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.testing.POJO.BillingAddress;
+import com.testing.POJO.Login;
+import com.testing.POJO.Product;
 import com.testing.POM.BaseTest;
 import com.testing.Utilities.JacksonUtilities;
 import com.testing.pages.CartPage;
@@ -39,16 +41,17 @@ public class TestCase1 extends BaseTest {
 		
 //		BillingAddress billingAddress = new BillingAddress("Valliappan","Ramanathan","11/1 AVPL Street",
 //				"California","90011","example@email.com" );
-		BillingAddress billingAddress = new BillingAddress();
-		InputStream input = getClass().getClassLoader().getResourceAsStream("Resources/myBillingDetails.json");
-		billingAddress = JacksonUtilities.deserializeJson(input, billingAddress);
+		 
+		
+		BillingAddress billingAddress = JacksonUtilities.deserializeJson("myBillingDetails.json", BillingAddress.class);
 		
 		HomePage homePage = new HomePage(driver);
 		StorePage storePage = homePage.clickStoreLink();
 		
 		storePage.search("Blue");
 		Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
-		storePage.addProductToCart("Blue Shoes");
+		Product product = new Product(1215);
+		storePage.addProductToCart(product.getName());
 		Thread.sleep(5000);
 		CartPage cartPage = storePage.viewElementsinCart();
 		
@@ -61,16 +64,20 @@ public class TestCase1 extends BaseTest {
 		Assert.assertEquals(checkOut.getNotice(), "Thank you. Your order has been received.");	
 	}
 	
-	@Test(dependsOnMethods = {"checkoutUsingBankTransfer"})
-	public void loginAndCheckoutUsingBankTransfer() throws InterruptedException
+	@Test
+	public void loginAndCheckoutUsingBankTransfer() throws InterruptedException, StreamReadException, DatabindException, IOException
 	{
+		
+		BillingAddress billingAddress = JacksonUtilities.deserializeJson("myBillingDetails.json", BillingAddress.class);
+
 		
 		HomePage homePage = new HomePage(driver);
 		StorePage storePage = homePage.clickStoreLink();
 		
 		storePage.search("Blue");
 		Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
-		storePage.addProductToCart("Blue Shoes");
+		Product product = new Product(1215);
+		storePage.addProductToCart(product.getName());
 		Thread.sleep(5000);
 		CartPage cartPage = storePage.viewElementsinCart();
 		
@@ -80,16 +87,11 @@ public class TestCase1 extends BaseTest {
 		checkOut.clickLoginLink();
 		Thread.sleep(2000);
 		
-		checkOut.enterUserName("email@example.com")
-		.enterPassword("pass1234")
+		Login login = JacksonUtilities.deserializeJson("login.json", Login.class);
+		checkOut.enterLoginDetails(login)
 		.clickLogin();
 				
-		checkOut.enterFirstName("Valliappan")
-				.enterLastName("Ramanathan")
-				.enterBillingAddress("11/1 AVPL Street N.Pudur")
-				.enterBillingCity("California")
-				.enterPostalCode("90011")
-				.enterEmailAddress("email@example.com");
+		checkOut.enterBilllingDetails(billingAddress);
 		Thread.sleep(2000);
 		checkOut.placeOrder();
 		Thread.sleep(5000);

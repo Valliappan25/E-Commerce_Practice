@@ -6,6 +6,7 @@
       <class name="com.testing.E_Commerce.TestCase1">
         <methods>
           <include name="tearDown"/>
+          <include name="loginAndCheckoutUsingBankTransfer"/>
           <include name="startDriver"/>
           <include name="checkoutUsingBankTransfer"/>
         </methods>

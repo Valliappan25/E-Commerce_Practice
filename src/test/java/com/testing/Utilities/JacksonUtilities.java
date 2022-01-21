@@ -11,9 +11,10 @@ import com.testing.POJO.BillingAddress;
 
 public class JacksonUtilities {
 
-	public static BillingAddress deserializeJson(InputStream input, BillingAddress billingAddress) throws StreamReadException, DatabindException, IOException 
+	public static <T> T deserializeJson(String fileName, Class<T> T) throws StreamReadException, DatabindException, IOException 
 	{
+		InputStream input = JacksonUtilities.class.getClassLoader().getResourceAsStream(fileName);
 		ObjectMapper mapper = new ObjectMapper();
-		return mapper.readValue( input, billingAddress.getClass());
+		return mapper.readValue(input, T);
 	}
 }
