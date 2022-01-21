@@ -52,15 +52,15 @@ public class TestCase1 extends BaseTest {
 		Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
 		Product product = new Product(1215);
 		storePage.addProductToCart(product.getName());
-		Thread.sleep(5000);
+		
 		CartPage cartPage = storePage.viewElementsinCart();
 		
 		cartPage.viewProductName();
 		CheckoutPage checkOut = cartPage.checkOutProductFromCart();
 				checkOut.enterBilllingDetails(billingAddress);
-		Thread.sleep(2000);
+		
 		checkOut.placeOrder();
-		Thread.sleep(5000);
+		
 		Assert.assertEquals(checkOut.getNotice(), "Thank you. Your order has been received.");	
 	}
 	
@@ -78,23 +78,23 @@ public class TestCase1 extends BaseTest {
 		Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
 		Product product = new Product(1215);
 		storePage.addProductToCart(product.getName());
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		CartPage cartPage = storePage.viewElementsinCart();
 		
 		cartPage.viewProductName();
 		CheckoutPage checkOut = cartPage.checkOutProductFromCart();
 		
 		checkOut.clickLoginLink();
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		
 		Login login = JacksonUtilities.deserializeJson("login.json", Login.class);
 		checkOut.enterLoginDetails(login)
 		.clickLogin();
 				
 		checkOut.enterBilllingDetails(billingAddress);
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		checkOut.placeOrder();
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		Assert.assertEquals(checkOut.getNotice(), "Thank you. Your order has been received.");	
 	}
 	

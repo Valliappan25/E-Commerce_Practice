@@ -1,5 +1,7 @@
 package com.testing.POM;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -17,6 +19,7 @@ public class BaseTest {
 		driver.get("https://askomdch.com");
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
 	}
 	
 	@AfterTest
