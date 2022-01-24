@@ -2,6 +2,8 @@ package com.testing.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.testing.POM.BasePage;
 
@@ -17,7 +19,9 @@ public class CartPage extends BasePage {
 	
 	public String viewProductName()
 	{
-		return driver.findElement(productName).getText();
+		WebElement productElement = driver.findElement(productName);
+		wait.until(ExpectedConditions.visibilityOf(productElement));
+		return productElement.getText();
 	}
 	
 	public CheckoutPage checkOutProductFromCart()

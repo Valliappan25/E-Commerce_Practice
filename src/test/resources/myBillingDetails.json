@@ -1,9 +1,11 @@
 {
 	"firstName": "Valliappan",
 	"lastName": "Ramanathan",
+	"country": "IN",
 	"address": "11/1 AVPL Street",
-	"city": "California",
-	"postalCode": "90011",
+	"city": "Coimbatore",
+	"state": "TN",
+	"postalCode": "641042",
 	"email": "example@email.com"
 }
 	

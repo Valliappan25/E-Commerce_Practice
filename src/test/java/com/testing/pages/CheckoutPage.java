@@ -2,6 +2,9 @@ package com.testing.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import com.testing.POJO.BillingAddress;
 import com.testing.POJO.Login;
@@ -16,11 +19,15 @@ public class CheckoutPage extends BasePage {
 	private By firstNameField = By.id("billing_first_name");
 	private By lastNameField = By.id("billing_last_name");
 	private By billingAddressField = By.id("billing_address_1");
+	private By billingCountry = By.id("billing_country");
+	private By billingState = By.id("billing_state");
 	private By billingCityField = By.id("billing_city");
 	private By bilingPostcodeField = By.id("billing_postcode");
 	private By emailField =  By.id("billing_email");
+	private By directBankTransferRadioButton = By.id("payment_method_bacs");
 	private By placeOrderButton = By.id("place_order");
 	private By notice = By.cssSelector(".woocommerce-notice");
+	private By overlay = By.cssSelector(".blockUI.blockOverlay");
 	
 	public CheckoutPage(WebDriver driver) {
 		super(driver);
@@ -36,7 +43,7 @@ public class CheckoutPage extends BasePage {
 
 	public CheckoutPage enterUserName(String userLoginName)
 	{
-		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(userName));
 		driver.findElement(userName).sendKeys(userLoginName);
 		return this;
 	}
@@ -57,7 +64,8 @@ public class CheckoutPage extends BasePage {
 	
 	public CheckoutPage enterFirstName(String fName)
 	{
-		driver.findElement(firstNameField).clear();
+		WebElement firstNameElement = driver.findElement(firstNameField);
+		wait.until(ExpectedConditions.elementToBeClickable(firstNameElement)).clear();;
 		driver.findElement(firstNameField).sendKeys(fName);
 		return this;
 	}
@@ -73,6 +81,20 @@ public class CheckoutPage extends BasePage {
 	{
 		driver.findElement(billingAddressField).clear();
 		driver.findElement(billingAddressField).sendKeys(address);
+		return this;
+	}
+	
+	public CheckoutPage enterBillingCountry(String country)
+	{
+		Select selectCountry = new Select(driver.findElement(billingCountry));
+		selectCountry.selectByValue(country);
+		return this;
+	}
+	
+	public CheckoutPage enterBillingstate(String state)
+	{
+		Select selectCountry = new Select(driver.findElement(billingState));
+		selectCountry.selectByValue(state);
 		return this;
 	}
 	
@@ -97,8 +119,19 @@ public class CheckoutPage extends BasePage {
 		return this;
 	}
 	
+	public CheckoutPage clickDirectBankTransfer()
+	{
+		WebElement radioElement = driver.findElement(directBankTransferRadioButton);
+		
+		if(!radioElement.isSelected())
+			radioElement.click();
+		
+		return this;
+	}
+	
 	public CheckoutPage placeOrder()
 	{
+		waitUntilOverlaystoInvisible(overlay);
 		driver.findElement(placeOrderButton).click();
 		System.out.println("Order Placed");
 		return this;
@@ -108,8 +141,10 @@ public class CheckoutPage extends BasePage {
 	{
 		return enterFirstName(billingAddress.getFirstName())
 		.enterLastName(billingAddress.getLastName())
+		.enterBillingCountry(billingAddress.getCountry())
 		.enterBillingAddress(billingAddress.getAddress())
 		.enterBillingCity(billingAddress.getCity())
+		.enterBillingstate(billingAddress.getState())
 		.enterPostalCode(billingAddress.getPostalCode())
 		.enterEmailAddress(billingAddress.getEmail());	
 	}
@@ -122,6 +157,7 @@ public class CheckoutPage extends BasePage {
 	
 	public String getNotice()
 	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(notice));
 		return driver.findElement(notice).getText();
 	}
 

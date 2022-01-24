@@ -29,19 +29,7 @@ public class TestCase1 extends BaseTest {
 	@Test
 	public void checkoutUsingBankTransfer() throws InterruptedException, StreamReadException, DatabindException, IOException
 	{
-//		BillingAddress billingAddress = new BillingAddress().
-//		setFirstName("Valliappan").
-//		setLastName("Ramanathan").
-//		setAddress("11/1 AVPL Street").
-//		setCity("California").
-//		setPostalCode("90011").
-//		setEmail("example@email.com");
-		
-		
-		
-//		BillingAddress billingAddress = new BillingAddress("Valliappan","Ramanathan","11/1 AVPL Street",
-//				"California","90011","example@email.com" );
-		 
+		loadURL();
 		
 		BillingAddress billingAddress = JacksonUtilities.deserializeJson("myBillingDetails.json", BillingAddress.class);
 		
@@ -57,9 +45,9 @@ public class TestCase1 extends BaseTest {
 		
 		cartPage.viewProductName();
 		CheckoutPage checkOut = cartPage.checkOutProductFromCart();
-				checkOut.enterBilllingDetails(billingAddress);
-		
-		checkOut.placeOrder();
+				checkOut.enterBilllingDetails(billingAddress)
+				.clickDirectBankTransfer()
+				.placeOrder();
 		
 		Assert.assertEquals(checkOut.getNotice(), "Thank you. Your order has been received.");	
 	}
@@ -67,10 +55,9 @@ public class TestCase1 extends BaseTest {
 	@Test
 	public void loginAndCheckoutUsingBankTransfer() throws InterruptedException, StreamReadException, DatabindException, IOException
 	{
-		
+		loadURL();
 		BillingAddress billingAddress = JacksonUtilities.deserializeJson("myBillingDetails.json", BillingAddress.class);
 
-		
 		HomePage homePage = new HomePage(driver);
 		StorePage storePage = homePage.clickStoreLink();
 		
@@ -78,23 +65,22 @@ public class TestCase1 extends BaseTest {
 		Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
 		Product product = new Product(1215);
 		storePage.addProductToCart(product.getName());
-		//Thread.sleep(5000);
-		CartPage cartPage = storePage.viewElementsinCart();
 		
+		CartPage cartPage = storePage.viewElementsinCart();
 		cartPage.viewProductName();
 		CheckoutPage checkOut = cartPage.checkOutProductFromCart();
 		
 		checkOut.clickLoginLink();
-		//Thread.sleep(2000);
-		
+	
 		Login login = JacksonUtilities.deserializeJson("login.json", Login.class);
 		checkOut.enterLoginDetails(login)
 		.clickLogin();
 				
-		checkOut.enterBilllingDetails(billingAddress);
-		//Thread.sleep(2000);
+		checkOut.enterBilllingDetails(billingAddress)
+		.clickDirectBankTransfer();
+		
 		checkOut.placeOrder();
-		//Thread.sleep(5000);
+		
 		Assert.assertEquals(checkOut.getNotice(), "Thank you. Your order has been received.");	
 	}
 	

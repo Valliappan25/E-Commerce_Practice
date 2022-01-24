@@ -16,15 +16,21 @@ public class BaseTest {
 	public void startDriver()
 	{
 		driver = DriverFactory.openBrowser("chrome");
+		
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
+	}
+	
+	public void loadURL()
+	{
 		driver.get("https://askomdch.com");
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
 	}
 	
 	@AfterTest
-	public void tearDown()
+	public void tearDown() throws InterruptedException
 	{
 		driver.quit();
+		Thread.sleep(500);
 	}
 }
