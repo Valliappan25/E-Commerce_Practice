@@ -86,6 +86,7 @@ public class CheckoutPage extends BasePage {
 	
 	public CheckoutPage enterBillingCountry(String country)
 	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(billingCountry));
 		Select selectCountry = new Select(driver.findElement(billingCountry));
 		selectCountry.selectByValue(country);
 		return this;

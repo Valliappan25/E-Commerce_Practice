@@ -1,7 +1,5 @@
 package com.testing.POM;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;

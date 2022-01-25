@@ -1,12 +1,7 @@
 package com.testing.E_Commerce;
 
-import java.io.FileInputStream;
+
 import java.io.IOException;
-import java.io.InputStream;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
 import org.testng.annotations.Test;
 
 import com.fasterxml.jackson.core.exc.StreamReadException;
@@ -23,6 +18,7 @@ import com.testing.pages.StorePage;
 
 import junit.framework.Assert;
 
+
 public class TestCase1 extends BaseTest {
 
 			
@@ -35,9 +31,10 @@ public class TestCase1 extends BaseTest {
 		
 		HomePage homePage = new HomePage(driver);
 		StorePage storePage = homePage.clickStoreLink();
-		
+		//Thread.sleep(1000);
 		storePage.search("Blue");
-		Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
+		
+		Assert.assertTrue(storePage.getTitle().contains("Search results"));
 		Product product = new Product(1215);
 		storePage.addProductToCart(product.getName());
 		
@@ -62,7 +59,7 @@ public class TestCase1 extends BaseTest {
 		StorePage storePage = homePage.clickStoreLink();
 		
 		storePage.search("Blue");
-		Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
+		Assert.assertTrue(storePage.getTitle().contains("Search results"));
 		Product product = new Product(1215);
 		storePage.addProductToCart(product.getName());
 		
@@ -75,10 +72,8 @@ public class TestCase1 extends BaseTest {
 		Login login = JacksonUtilities.deserializeJson("login.json", Login.class);
 		checkOut.enterLoginDetails(login)
 		.clickLogin();
-				
 		checkOut.enterBilllingDetails(billingAddress)
 		.clickDirectBankTransfer();
-		
 		checkOut.placeOrder();
 		
 		Assert.assertEquals(checkOut.getNotice(), "Thank you. Your order has been received.");	

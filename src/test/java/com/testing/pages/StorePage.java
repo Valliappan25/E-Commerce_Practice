@@ -24,8 +24,8 @@ public class StorePage extends BasePage{
 	
 	private StorePage productName(String text)
 	{
-		WebElement productNameElement = driver.findElement(searchField);
-		wait.until(ExpectedConditions.visibilityOf(productNameElement)).sendKeys(text);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(searchField));
+		driver.findElement(searchField).sendKeys(text);
 		return this;
 	}
 	
@@ -44,6 +44,7 @@ public class StorePage extends BasePage{
 	
 	public String getTitle()
 	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(title));
 		return driver.findElement(title).getText();	
 	}
 	

@@ -3,18 +3,31 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.testing</groupId>
-  <artifactId>Practice</artifactId>
+  <artifactId>E_Commerce</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Practice</name>
+  <name>E_commerce</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
+  <dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.4.0</version>
+    <scope>test</scope>
+	</dependency>
+  <dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.0.3</version>
+	</dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -31,6 +44,7 @@
     <artifactId>jackson-databind</artifactId>
     <version>2.13.1</version>
 	</dependency>
+	
 
   </dependencies>
 </project>
