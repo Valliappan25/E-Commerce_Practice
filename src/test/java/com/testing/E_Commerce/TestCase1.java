@@ -31,10 +31,11 @@ public class TestCase1 extends BaseTest {
 		
 		HomePage homePage = new HomePage(driver);
 		StorePage storePage = homePage.clickStoreLink();
-		//Thread.sleep(1000);
-		storePage.search("Blue");
 		
-		Assert.assertTrue(storePage.getTitle().contains("Search results"));
+		storePage.search("Blue");
+		Thread.sleep(1000);
+		System.out.println(storePage.getTitle());
+		Assert.assertEquals(storePage.getTitle(), "Search results: “Blue”");
 		Product product = new Product(1215);
 		storePage.addProductToCart(product.getName());
 		

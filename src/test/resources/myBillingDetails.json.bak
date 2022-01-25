@@ -1,10 +1,10 @@
 {
 	"firstName": "Valliappan",
 	"lastName": "Ramanathan",
-	"country": "India",
+	"country": "IN",
 	"address": "11/1 AVPL Street",
 	"city": "Coimbatore",
-	"state": "Tamil Nadu",
+	"state": "TN",
 	"postalCode": "641042",
 	"email": "example@email.com"
 }

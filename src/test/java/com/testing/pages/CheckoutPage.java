@@ -1,6 +1,7 @@
 package com.testing.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,6 +29,8 @@ public class CheckoutPage extends BasePage {
 	private By placeOrderButton = By.id("place_order");
 	private By notice = By.cssSelector(".woocommerce-notice");
 	private By overlay = By.cssSelector(".blockUI.blockOverlay");
+	private By alternateContryOption = By.id("select2-billing_country-container");
+	private By alternateStateOption = By.id("select2-billing_state-container");
 	
 	public CheckoutPage(WebDriver driver) {
 		super(driver);
@@ -88,14 +91,24 @@ public class CheckoutPage extends BasePage {
 	{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(billingCountry));
 		Select selectCountry = new Select(driver.findElement(billingCountry));
-		selectCountry.selectByValue(country);
+		selectCountry.selectByVisibleText(country);
+		
+//		wait.until(ExpectedConditions.elementToBeClickable(alternateContryOption));
+//		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"billing_country\"]/option[103]")));
+//		((JavascriptExecutor) driver).executeScript("argumrnts[0].scrollIntoView(true);", element);
+//		element.click();
 		return this;
 	}
 	
 	public CheckoutPage enterBillingstate(String state)
 	{
 		Select selectCountry = new Select(driver.findElement(billingState));
-		selectCountry.selectByValue(state);
+		selectCountry.selectByVisibleText(state);
+		
+//		wait.until(ExpectedConditions.elementToBeClickable(alternateStateOption));
+//		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='"+state+"']")));
+//		((JavascriptExecutor) driver).executeScript("argumrnts[0].scrollIntoView(true);", element);
+//		element.click();
 		return this;
 	}
 	
