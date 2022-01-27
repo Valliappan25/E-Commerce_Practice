@@ -29,7 +29,7 @@ public class TestCase1 extends BaseTest {
 		
 		BillingAddress billingAddress = JacksonUtilities.deserializeJson("myBillingDetails.json", BillingAddress.class);
 		
-		HomePage homePage = new HomePage(driver);
+		HomePage homePage = new HomePage(getDriver());
 		StorePage storePage = homePage.clickStoreLink();
 		
 		storePage.search("Blue");
@@ -56,7 +56,7 @@ public class TestCase1 extends BaseTest {
 		loadURL();
 		BillingAddress billingAddress = JacksonUtilities.deserializeJson("myBillingDetails.json", BillingAddress.class);
 
-		HomePage homePage = new HomePage(driver);
+		HomePage homePage = new HomePage(getDriver());
 		StorePage storePage = homePage.clickStoreLink();
 		
 		storePage.search("Blue");

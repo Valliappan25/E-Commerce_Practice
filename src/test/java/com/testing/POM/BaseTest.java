@@ -1,34 +1,69 @@
 package com.testing.POM;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
-import com.testing.Factory.DriverFactory;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 
-	protected WebDriver driver;
+	protected ThreadLocal<WebDriver> driver = new ThreadLocal();
 	
-	@BeforeTest
-	public void startDriver()
+	private void setDriver(WebDriver driver)
 	{
-		driver = DriverFactory.openBrowser("chrome");
+		this.driver.set(driver);
+	}
+	
+	protected WebDriver getDriver()
+	{
+		return this.driver.get();
+	}
+	
+	@Parameters("browser")
+	@BeforeTest
+	public void startDriver(String browser)
+	{
+		 browser = System.getProperty("browser",browser);
 		
+		switch(browser.toLowerCase()){
+		case "chrome":
+			WebDriverManager.chromedriver().cachePath("Driver").setup();
+	       setDriver(new ChromeDriver());
+	       break;
+	       
+		case "firefox":
+			WebDriverManager.firefoxdriver().cachePath("Driver").setup();
+		       setDriver(new FirefoxDriver());
+		    break;
+		    
+		default:
+			throw new IllegalArgumentException("Invalid Browser "+ browser);
+		}
+		
+		System.out.println("Current Thread " + Thread.currentThread().getId());
+		System.out.println("Driver " + getDriver());
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
 	}
 	
 	public void loadURL()
 	{
-		driver.get("https://askomdch.com");
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
+		getDriver().get("https://askomdch.com");
+		getDriver().manage().window().maximize();
+		getDriver().manage().deleteAllCookies();
 	}
 	
 	@AfterTest
 	public void tearDown() throws InterruptedException
 	{
-		//driver.quit();
 		Thread.sleep(500);
+		System.out.println("Current Thread " + Thread.currentThread().getId());
+		System.out.println("Driver " + getDriver());
+		getDriver().quit();
+		
+		
 	}
 }

@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+public class BasePage  {
 	
 	protected WebDriver driver;
 	protected WebDriverWait wait;
@@ -19,6 +19,8 @@ public class BasePage {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	}
+	
+	
 	
 	public void waitUntilOverlaystoInvisible(By overlay)
 	{

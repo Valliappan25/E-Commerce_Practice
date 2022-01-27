@@ -10,15 +10,18 @@ public class DriverFactory {
 
 	public static WebDriver openBrowser(String browserType)
 	{
+		
+		browserType = System.getProperty("browser");
 		if(browserType.equalsIgnoreCase("chrome"))
 		{
 			WebDriverManager.chromedriver().cachePath("Driver").setup();
 	        return new ChromeDriver();
 		}
-		else {
+		else  {
 			WebDriverManager.firefoxdriver().cachePath("Driver").setup();     
 			return new FirefoxDriver();
 		}
+	
 	}
 }
 	
