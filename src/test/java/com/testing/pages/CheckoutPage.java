@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.testing.POJO.BillingAddress;
-import com.testing.POJO.Login;
+import com.testing.POJO.User;
 import com.testing.POM.BasePage;
 
 public class CheckoutPage extends BasePage {
@@ -31,6 +31,7 @@ public class CheckoutPage extends BasePage {
 	private By overlay = By.cssSelector(".blockUI.blockOverlay");
 	private By alternateContryOption = By.id("select2-billing_country-container");
 	private By alternateStateOption = By.id("select2-billing_state-container");
+	private By selectedProduct = By.cssSelector("td.product-name");
 	
 	public CheckoutPage(WebDriver driver) {
 		super(driver);
@@ -63,6 +64,14 @@ public class CheckoutPage extends BasePage {
 	
 		driver.findElement(loginButton).click();
 		return this;
+	}
+	
+	public String getProductName()
+	{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(selectedProduct));
+		String productName = driver.findElement(selectedProduct).getText();
+		return productName;
+		
 	}
 	
 	public CheckoutPage enterFirstName(String fName)
@@ -163,7 +172,7 @@ public class CheckoutPage extends BasePage {
 		.enterEmailAddress(billingAddress.getEmail());	
 	}
 	
-	public CheckoutPage enterLoginDetails(Login login)
+	public CheckoutPage enterLoginDetails(User login)
 	{
 		return enterUserName(login.getEmail())
 				.enterPassword(login.getPassword());

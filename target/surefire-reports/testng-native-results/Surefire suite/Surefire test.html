@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Jan 27 11:12:24 IST 2022</td>
+<td>Started on:</td><td>Fri Jan 28 08:54:00 IST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>3 seconds (3243 ms)</td>
+<tr><td>Total time:</td><td>16 seconds (16892 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,16 +76,56 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer()'><b>checkoutUsingBankTransfer</b><br>Test class: com.testing.E_Commerce.TestCase1</td>
-<td><div><pre>java.lang.NullPointerException
-	at com.testing.POM.BaseTest.loadURL(BaseTest.java:54)
-	at com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer(TestCase1.java:28)
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: .woocommerce-products-header__title
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: &apos;4.1.1&apos;, revision: &apos;e8fcc2cecf&apos;
+System info: host: &apos;LAPTOP-LUOM9UGK&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.13&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [5909d76f-58f3-4b67-9ae4-c95ed4bfcc35, findElement {using=css selector, value=.woocommerce-products-header__title}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 96.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20220119190439, moz:debuggerAddress: localhost:53000, moz:geckodriverVersion: 0.30.0, moz:headless: false, moz:processID: 14284, moz:profile: C:\Users\Valli\AppData\Loca..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, proxy: Proxy(), se:cdp: ws://localhost:53000/devtoo..., se:cdpVersion: 85, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 5909d76f-58f3-4b67-9ae4-c95ed4bfcc35
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at com.testing.pages.StorePage.getTitle(StorePage.java:48)
+	at com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer(TestCase1.java:37)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2071414149", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2071414149'><pre>java.lang.NullPointerException
-	at com.testing.POM.BaseTest.loadURL(BaseTest.java:54)
-	at com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer(TestCase1.java:28)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1244705789", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1244705789'><pre>org.openqa.selenium.NoSuchElementException: Unable to locate element: .woocommerce-products-header__title
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: &apos;4.1.1&apos;, revision: &apos;e8fcc2cecf&apos;
+System info: host: &apos;LAPTOP-LUOM9UGK&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.13&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [5909d76f-58f3-4b67-9ae4-c95ed4bfcc35, findElement {using=css selector, value=.woocommerce-products-header__title}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 96.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20220119190439, moz:debuggerAddress: localhost:53000, moz:geckodriverVersion: 0.30.0, moz:headless: false, moz:processID: 14284, moz:profile: C:\Users\Valli\AppData\Loca..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, proxy: Proxy(), se:cdp: ws://localhost:53000/devtoo..., se:cdpVersion: 85, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 5909d76f-58f3-4b67-9ae4-c95ed4bfcc35
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at com.testing.pages.StorePage.getTitle(StorePage.java:48)
+	at com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer(TestCase1.java:37)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -102,20 +142,24 @@ function toggleAllBoxes() {
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </pre></div></td>
-<td>0</td>
-<td>com.testing.E_Commerce.TestCase1@38afe297</td></tr>
+<td>6</td>
+<td>com.testing.E_Commerce.TestCase1@70325e14</td></tr>
 <tr>
 <td title='com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer()'><b>loginAndCheckoutUsingBankTransfer</b><br>Test class: com.testing.E_Commerce.TestCase1</td>
-<td><div><pre>java.lang.NullPointerException
-	at com.testing.POM.BaseTest.loadURL(BaseTest.java:54)
-	at com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer(TestCase1.java:56)
+<td><div><pre>junit.framework.AssertionFailedError
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.assertTrue(Assert.java:20)
+	at junit.framework.Assert.assertTrue(Assert.java:27)
+	at com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer(TestCase1.java:63)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2131210670", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2131210670'><pre>java.lang.NullPointerException
-	at com.testing.POM.BaseTest.loadURL(BaseTest.java:54)
-	at com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer(TestCase1.java:56)
+... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace140699494", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace140699494'><pre>junit.framework.AssertionFailedError
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.assertTrue(Assert.java:20)
+	at junit.framework.Assert.assertTrue(Assert.java:27)
+	at com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer(TestCase1.java:63)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -132,8 +176,8 @@ function toggleAllBoxes() {
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </pre></div></td>
-<td>0</td>
-<td>com.testing.E_Commerce.TestCase1@38afe297</td></tr>
+<td>4</td>
+<td>com.testing.E_Commerce.TestCase1@70325e14</td></tr>
 </table><p>
 </body>
 </html>

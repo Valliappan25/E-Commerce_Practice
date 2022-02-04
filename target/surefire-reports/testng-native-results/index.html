@@ -135,13 +135,31 @@
                   <a name="checkoutUsingBankTransfer">
                   </a> <!-- checkoutUsingBankTransfer -->
                   <span class="method-name">checkoutUsingBankTransfer</span>
-                  <div class="stack-trace">java.lang.NullPointerException
-	at com.testing.POM.BaseTest.loadURL(BaseTest.java:54)
-	at com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer(TestCase1.java:28)
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Unable to locate element: .woocommerce-products-header__title
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: &apos;4.1.1&apos;, revision: &apos;e8fcc2cecf&apos;
+System info: host: &apos;LAPTOP-LUOM9UGK&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.13&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [5909d76f-58f3-4b67-9ae4-c95ed4bfcc35, findElement {using=css selector, value=.woocommerce-products-header__title}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 96.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20220119190439, moz:debuggerAddress: localhost:53000, moz:geckodriverVersion: 0.30.0, moz:headless: false, moz:processID: 14284, moz:profile: C:\Users\Valli\AppData\Loca..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, proxy: Proxy(), se:cdp: ws://localhost:53000/devtoo..., se:cdpVersion: 85, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 5909d76f-58f3-4b67-9ae4-c95ed4bfcc35
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at com.testing.pages.StorePage.getTitle(StorePage.java:48)
+	at com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer(TestCase1.java:37)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-... Removed 12 stack frames
+... Removed 16 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -150,9 +168,11 @@
                   <a name="loginAndCheckoutUsingBankTransfer">
                   </a> <!-- loginAndCheckoutUsingBankTransfer -->
                   <span class="method-name">loginAndCheckoutUsingBankTransfer</span>
-                  <div class="stack-trace">java.lang.NullPointerException
-	at com.testing.POM.BaseTest.loadURL(BaseTest.java:54)
-	at com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer(TestCase1.java:56)
+                  <div class="stack-trace">junit.framework.AssertionFailedError
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.assertTrue(Assert.java:20)
+	at junit.framework.Assert.assertTrue(Assert.java:27)
+	at com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer(TestCase1.java:63)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
@@ -218,16 +238,16 @@ data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'checkoutUsingBankTransfer')
 data.setCell(0, 2, 'com.testing.E_Commerce.TestCase1')
-data.setCell(0, 3, 1);
+data.setCell(0, 3, 6384);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'loginAndCheckoutUsingBankTransfer')
 data.setCell(1, 2, 'com.testing.E_Commerce.TestCase1')
-data.setCell(1, 3, 1);
+data.setCell(1, 3, 4259);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 ms</span>
+              <span class="suite-total-time">Total running time: 10 seconds</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -242,18 +262,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">2 ignored methods</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">com.testing.POM.BaseTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">tearDown</span>
-                <br/>
-                <span class="ignored-method-name">startDriver</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Surefire_suite" class="panel">
@@ -263,26 +274,34 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">com.testing.E_Commerce.TestCase1</div> <!-- chronological-class-name -->
-              <div class="configuration-test before">
-                <span class="method-name">startDriver(Chrome)</span>
+              <div class="configuration-method before">
+                <span class="method-name">startDriver(Firefox)</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-test before -->
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">startDriver(Firefox)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">checkoutUsingBankTransfer</span>
-                <span class="method-start">2118 ms</span>
+                <span class="method-start">8822 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">loginAndCheckoutUsingBankTransfer</span>
-                <span class="method-start">2118 ms</span>
+                <span class="method-start">8822 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-test after">
+              <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">2124 ms</span>
-              </div> <!-- configuration-test after -->
+                <span class="method-start">13097 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">15225 ms</span>
+              </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

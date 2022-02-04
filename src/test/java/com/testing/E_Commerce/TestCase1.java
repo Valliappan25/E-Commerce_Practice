@@ -7,9 +7,10 @@ import org.testng.annotations.Test;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.testing.POJO.BillingAddress;
-import com.testing.POJO.Login;
+import com.testing.POJO.User;
 import com.testing.POJO.Product;
 import com.testing.POM.BaseTest;
+import com.testing.Utilities.ConfigLoader;
 import com.testing.Utilities.JacksonUtilities;
 import com.testing.pages.CartPage;
 import com.testing.pages.CheckoutPage;
@@ -25,12 +26,11 @@ public class TestCase1 extends BaseTest {
 	@Test
 	public void checkoutUsingBankTransfer() throws InterruptedException, StreamReadException, DatabindException, IOException
 	{
-		loadURL();
+		loadURL("/");
 		
 		BillingAddress billingAddress = JacksonUtilities.deserializeJson("myBillingDetails.json", BillingAddress.class);
 		
-		HomePage homePage = new HomePage(getDriver());
-		StorePage storePage = homePage.clickStoreLink();
+		StorePage storePage = new HomePage(getDriver()).clickStoreLink();
 		
 		storePage.search("Blue");
 		Thread.sleep(1000);
@@ -53,7 +53,7 @@ public class TestCase1 extends BaseTest {
 	@Test
 	public void loginAndCheckoutUsingBankTransfer() throws InterruptedException, StreamReadException, DatabindException, IOException
 	{
-		loadURL();
+		loadURL("/");
 		BillingAddress billingAddress = JacksonUtilities.deserializeJson("myBillingDetails.json", BillingAddress.class);
 
 		HomePage homePage = new HomePage(getDriver());
@@ -65,12 +65,14 @@ public class TestCase1 extends BaseTest {
 		storePage.addProductToCart(product.getName());
 		
 		CartPage cartPage = storePage.viewElementsinCart();
-		cartPage.viewProductName();
+		Assert.assertEquals(cartPage.viewProductName(), product.getName());
 		CheckoutPage checkOut = cartPage.checkOutProductFromCart();
 		
 		checkOut.clickLoginLink();
 	
-		Login login = JacksonUtilities.deserializeJson("login.json", Login.class);
+		//Login login = JacksonUtilities.deserializeJson("login.json", Login.class);
+		User login = new User(ConfigLoader.getInstance().getUserName(),
+				ConfigLoader.getInstance().getPassword());
 		checkOut.enterLoginDetails(login)
 		.clickLogin();
 		checkOut.enterBilllingDetails(billingAddress)

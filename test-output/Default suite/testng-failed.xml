@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testing.E_Commerce.TestCase1">
+      <class name="com.testing.E_Commerce.LoginTest">
         <methods>
           <include name="tearDown"/>
+          <include name="loginDuringCheckOut"/>
           <include name="startDriver"/>
-          <include name="checkoutUsingBankTransfer"/>
         </methods>
-      </class> <!-- com.testing.E_Commerce.TestCase1 -->
+      </class> <!-- com.testing.E_Commerce.LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

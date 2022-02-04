@@ -1,13 +1,24 @@
 package com.testing.POM;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
+import com.testing.Utilities.ConfigLoader;
+import com.testing.Utilities.CookieUtils;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.http.Cookies;
 
 public class BaseTest {
 
@@ -24,7 +35,7 @@ public class BaseTest {
 	}
 	
 	@Parameters("browser")
-	@BeforeTest
+	@BeforeMethod
 	public void startDriver(String browser)
 	{
 		 browser = System.getProperty("browser",browser);
@@ -35,9 +46,9 @@ public class BaseTest {
 	       setDriver(new ChromeDriver());
 	       break;
 	       
-		case "firefox":
-			WebDriverManager.firefoxdriver().cachePath("Driver").setup();
-		       setDriver(new FirefoxDriver());
+		case "edge":
+			WebDriverManager.edgedriver().cachePath("Driver").setup();
+		       setDriver(new EdgeDriver());
 		    break;
 		    
 		default:
@@ -49,14 +60,24 @@ public class BaseTest {
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
 	}
 	
-	public void loadURL()
+	public void loadURL(String urlPath) throws IOException
 	{
-		getDriver().get("https://askomdch.com");
+		getDriver().get(ConfigLoader.getInstance().getURL()+urlPath);
 		getDriver().manage().window().maximize();
 		getDriver().manage().deleteAllCookies();
 	}
 	
-	@AfterTest
+	public void injectCookiesToBrowser(Cookies cookies)
+	{
+		CookieUtils cookieUtils = new CookieUtils();
+		List<Cookie> seleniumCookies = cookieUtils.convertRestAssuredToSeleniumCookies(cookies);
+		for(Cookie cookie : seleniumCookies)
+		{
+			getDriver().manage().addCookie(cookie);
+		}
+	}
+	
+	@AfterMethod
 	public void tearDown() throws InterruptedException
 	{
 		Thread.sleep(500);

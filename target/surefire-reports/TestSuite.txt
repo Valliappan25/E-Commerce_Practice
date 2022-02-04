@@ -1,12 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 3.589 s <<< FAILURE! - in TestSuite
-com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer  Time elapsed: 0.001 s  <<< FAILURE!
-java.lang.NullPointerException
-	at com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer(TestCase1.java:28)
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 17.528 s <<< FAILURE! - in TestSuite
+com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer  Time elapsed: 4.196 s  <<< FAILURE!
+junit.framework.AssertionFailedError
+	at com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer(TestCase1.java:63)
 
-com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer  Time elapsed: 0.001 s  <<< FAILURE!
-java.lang.NullPointerException
-	at com.testing.E_Commerce.TestCase1.loginAndCheckoutUsingBankTransfer(TestCase1.java:56)
+com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer  Time elapsed: 6.422 s  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: 
+Unable to locate element: .woocommerce-products-header__title
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.1.1', revision: 'e8fcc2cecf'
+System info: host: 'LAPTOP-LUOM9UGK', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.13'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [5909d76f-58f3-4b67-9ae4-c95ed4bfcc35, findElement {using=css selector, value=.woocommerce-products-header__title}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 96.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20220119190439, moz:debuggerAddress: localhost:53000, moz:geckodriverVersion: 0.30.0, moz:headless: false, moz:processID: 14284, moz:profile: C:\Users\Valli\AppData\Loca..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, proxy: Proxy(), se:cdp: ws://localhost:53000/devtoo..., se:cdpVersion: 85, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 5909d76f-58f3-4b67-9ae4-c95ed4bfcc35
+	at com.testing.E_Commerce.TestCase1.checkoutUsingBankTransfer(TestCase1.java:37)
 

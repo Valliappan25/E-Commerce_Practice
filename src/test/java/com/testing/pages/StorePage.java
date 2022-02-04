@@ -1,11 +1,14 @@
 package com.testing.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.testing.POM.BasePage;
+import com.testing.POM.BaseTest;
 
 
 public class StorePage extends BasePage{
@@ -16,7 +19,7 @@ public class StorePage extends BasePage{
 	private By searchButton = By.cssSelector("button[value='Search']");
 	private By title = By.cssSelector(".woocommerce-products-header__title");
 	private By viewCart = By.cssSelector("a[title='View cart']");
-	
+	private BaseTest base;
 	public StorePage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		super(driver);
